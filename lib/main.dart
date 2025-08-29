@@ -71,7 +71,7 @@ class SignUpscreen extends StatefulWidget {
   const SignUpscreen({super.key});
 
   @override
-  State<SignUpscreen> createState() => _SignUpSCRState();
+  State<SignUpscreen> createState() => _SignUpscreenState();
 }
 
 class _SignUpSCRState extends State<SignUpscreen> {
@@ -147,7 +147,7 @@ class _SignUpSCRState extends State<SignUpscreen> {
 
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => HomeSCR()),
+                  MaterialPageRoute(builder: (context) => Homescreen()),
                 );
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'weak-password') {
@@ -232,7 +232,7 @@ class _LoginscreenState extends State<Loginscreen> {
                     .then((value) {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeSCR()),
+                    MaterialPageRoute(builder: (context) =>  Homescreen()),
                   );
                 });
               } on FirebaseAuthException catch (e) {
@@ -260,19 +260,19 @@ class _LoginscreenState extends State<Loginscreen> {
   }
 }
 
-class HomeSCR extends StatefulWidget {
-  const HomeSCR({super.key});
+class  Homescreen extends StatefulWidget {
+  const  Homescreen({super.key});
 
   @override
-  State<HomeSCR> createState() => _HomeSCRState();
+  State< Homescreen> createState() => _ HomescreenState();
 }
 
-class _HomeSCRState extends State<HomeSCR> {
+class _ HomescreenState extends State<Homescreen> {
   TextEditingController searchController = TextEditingController();
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
 
-  DatabaseReference databaseReference = FirebaseDatabase.instance.ref("students");
+  DatabaseReference databaseReference = FirebaseDatabase.instance.ref("learner");
   final key = FirebaseAuth.instance.currentUser!.uid;
 
   int id = 1;
@@ -303,7 +303,7 @@ class _HomeSCRState extends State<HomeSCR> {
               controller: searchController,
               decoration: InputDecoration(
                 label: Text("Search BY Title"),
-                hintText: "Search Here ......",
+                hintText: "Search Here",
               ),
               onChanged: (String value) {
                 setState(() {}); 
